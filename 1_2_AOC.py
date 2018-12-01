@@ -5,21 +5,20 @@ def readfile2(filename):
     noi = 0 # number of iterations
     infile = open(filename, 'r')
     iteration = []
-    while total not in iteration:
+    while True:
+        infile.seek(0,0)
         for line in infile:
-            noi += 1
-            print(noi)
-
             if line.find('+') != -1:
+
                 total += int(line[1:-1])
-                if total in iteration:
+                if int(total) in iteration:
                     sys.exit(print('The sequence first reaches %g twice' %total))
-                iteration.append(total)
+                iteration.append(int(total))
 
             elif line.find('-') != -1:
                 total -= int(line[1:-1])
-                if total in iteration:
+                if int(total) in iteration:
                     sys.exit(print('The sequence first reaches %g twice' %total))
-                iteration.append(total)
+                iteration.append(int(total))
 
 readfile2('data_1_1.txt')
