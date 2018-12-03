@@ -1,3 +1,20 @@
+# part 1 
+
+def readfile1(filename):
+    infile = open(filename, 'r')
+    words = 0
+    for line in infile:
+
+        if line.find('+') != -1:
+            words += float(line[1:-1])
+        elif line.find('-') != -1:
+            words -= float(line[1:-1])
+        print(words)
+
+readfile1('data_1_1.txt')
+
+
+# part 2
 import sys
 
 def readfile2(filename):
