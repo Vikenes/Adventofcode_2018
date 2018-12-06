@@ -1,39 +1,24 @@
 # part 1 
+f = open('data_1.txt')
+data = [int(line) for line in f]
 
-def readfile1(filename):
-    infile = open(filename, 'r')
-    words = 0
-    for line in infile:
-
-        if line.find('+') != -1:
-            words += float(line[1:-1])
-        elif line.find('-') != -1:
-            words -= float(line[1:-1])
-        print(words)
-
-readfile1('data_1_1.txt')
+words = 0
+for line in data:
+    words += line
+print(words)
 
 
 # part 2
 import sys
 
-def readfile2(filename):
-    total = 0
-    infile = open(filename, 'r')
-    iteration = []
-    while True:
-        infile.seek(0,0)
-        for line in infile:
-            if line.find('+') != -1:
-                total += int(line[1:-1])
-                if int(total) in iteration:
-                    sys.exit(print('The sequence first reaches %g twice' %total))
-                iteration.append(int(total))
+total = 0
+f = open('data_1.txt', 'r')
+data = [int(line) for line in f]
+found = set()
 
-            elif line.find('-') != -1:
-                total -= int(line[1:-1])
-                if int(total) in iteration:
-                    sys.exit(print('The sequence first reaches %g twice' %total))
-                iteration.append(int(total))
-
-readfile2('data_1_1.txt')
+while True:
+    for line in data:
+        total += line
+        if total in found:
+                sys.exit(print('The sequence first reaches %g twice' %total))
+        found.add(int(total))
