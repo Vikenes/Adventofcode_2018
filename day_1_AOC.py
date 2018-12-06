@@ -21,4 +21,4 @@ while True:
         total += line
         if total in found:
                 sys.exit(print('The sequence first reaches %g twice' %total))
-        found.add(int(total))
+        found.add(total)
